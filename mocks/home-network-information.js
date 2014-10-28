@@ -19,25 +19,36 @@ module.exports = function(app) {
   homeNetworkInformationRouter.get('/:identifier', function(req, res) {
     var identifier = req.params.identifier;
 
-    var response = {
-      status: 'complete',
-      wifi: {
-        status: 'on',
-        rag: 'green',
-        resolution: 'No action required',
-        encryption: {
-          type: 'WPA2',
-          rag: 'green',
-          resolution: 'No action required'
-        }
-      }
-      //devices: [
-        //{
-          //hostName: 'iPhone',
-          //interfaceType: 'ethernet'
-        //}
-      //]
-    };
+    var response;
+
+    switch(identifier) {
+      case 'random-hash-2222':
+        response = {
+          status: 'complete',
+          wifi: {
+            status: 'on',
+            rag: 'green',
+            encryption: {
+              type: 'WEP',
+              rag: 'amber',
+              resolution: 'Customer home network has basic WEP encryption only. Recommend customer upgrades to a stronger encryption mode.'
+            }
+          }
+        };
+        break;
+      default:
+        response = {
+          status: 'complete',
+          wifi: {
+            status: 'on',
+            rag: 'green',
+            encryption: {
+              type: 'WPA2',
+              rag: 'green',
+            }
+          }
+        };
+    }
 
     res.send(response);
   });
