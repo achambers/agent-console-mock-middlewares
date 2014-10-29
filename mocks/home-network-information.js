@@ -50,6 +50,34 @@ module.exports = function(app) {
           }
         };
         break;
+      case 'random-hash-4444':
+        response = {
+          status: 'complete',
+          wifi: {
+            status: 'off',
+            rag: 'grey',
+            resolution: 'The wireless interface on the customers router is inactive. Recommend the customer activates their router wireless interface.',
+            encryption: {
+              type: 'WEP',
+              rag: 'grey'
+            }
+          }
+        };
+        break;
+      case 'random-hash-5555':
+        response = {
+          status: 'complete',
+          wifi: {
+            status: 'off',
+            rag: 'grey',
+            resolution: 'The wireless interface on the customers router is inactive. Recommend the customer activates their router wireless interface.',
+            encryption: {
+              type: 'No Encryption',
+              rag: 'grey'
+            }
+          }
+        };
+        break;
       default:
         response = {
           status: 'complete',
