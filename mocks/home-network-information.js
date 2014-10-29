@@ -43,7 +43,7 @@ module.exports = function(app) {
             status: 'on',
             rag: 'green',
             encryption: {
-              type: 'No encryption',
+              type: 'No Encryption',
               rag: 'red',
               resolution: 'There is no encryption enabled on the customer\'s home network. Recommend the customer enables encryption.'
             }
@@ -73,6 +73,19 @@ module.exports = function(app) {
             resolution: 'The wireless interface on the customers router is inactive. Recommend the customer activates their router wireless interface.',
             encryption: {
               type: 'No Encryption',
+              rag: 'grey'
+            }
+          }
+        };
+        break;
+      case 'random-hash-6666':
+        response = {
+          status: 'complete',
+          wifi: {
+            status: 'unknown',
+            rag: 'red',
+            encryption: {
+              type: 'unknown',
               rag: 'grey'
             }
           }
