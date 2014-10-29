@@ -36,6 +36,20 @@ module.exports = function(app) {
           }
         };
         break;
+      case 'random-hash-3333':
+        response = {
+          status: 'complete',
+          wifi: {
+            status: 'on',
+            rag: 'green',
+            encryption: {
+              type: 'No encryption',
+              rag: 'red',
+              resolution: 'There is no encryption enabled on the customer\'s home network. Recommend the customer enables encryption.'
+            }
+          }
+        };
+        break;
       default:
         response = {
           status: 'complete',
