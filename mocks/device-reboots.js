@@ -5,35 +5,73 @@ module.exports = function(app) {
 
   deviceRebootsRouter.post('/', function(req, res) {
     var identifier = req.body['sns_service_id'];
+    var response;
+    var responseStatus = 201;
 
-    counter = 0;
+    switch(identifier) {
+      case '2222':
+        response = {
+          'errors': [
+            {
+              'code': 'device.reboot.initiation.device.not.compatible',
+              'detail': 'Device is not compatible'
+            }
+          ]
+        };
+        responseStatus = 502;
+        break;
 
-    var response = {
-      '_links': {
-        'diag:latest_reboot_job': {
-          'href': '/api/device_reboots/random-hash-' + identifier
-        }
-      }
-    };
+      case '4444':
+        response = {};
+        responseStatus = 500;
 
-    res.status(201).send(response);
+      default:
+        counter = 0;
+
+        response = {
+          '_links': {
+            'diag:latest_reboot_job': {
+              'href': '/api/device_reboots/random-hash-' + identifier
+            }
+          }
+        };
+    }
+
+    res.status(responseStatus).send(response);
   });
 
-  deviceRebootsRouter.get('/:identifer', function(req, res) {
+  deviceRebootsRouter.get('/:identifier', function(req, res) {
     var identifier = req.params.identifier;
     var statuses = ['progressing', 'progressing', 'progressing', 'progressing', 'complete'];
     var status = statuses[counter];
+    var responseStatus = 200;
+    var response;
 
-    counter += 1;
-    if (counter === statuses.length) {
-      counter = 0;
+    switch(identifier) {
+      case 'random-hash-3333':
+        response = {
+          'errors': [
+            {
+              'code': 'device.reboot.initiation.device.not.compatible',
+              'detail': 'Device is not compatible'
+            }
+          ]
+        };
+        responseStatus = 502;
+        break;
+
+      default:
+        counter += 1;
+        if (counter === statuses.length) {
+          counter = 0;
+        }
+
+        response = {
+          'status': status
+        };
     }
 
-    var response = {
-      'status': status
-    };
-
-    res.send(response);
+    res.status(responseStatus).send(response);
   });
 
   app.use('/api/device_reboots', deviceRebootsRouter);
