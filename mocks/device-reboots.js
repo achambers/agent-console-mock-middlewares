@@ -9,18 +9,6 @@ module.exports = function(app) {
     var responseStatus = 201;
 
     switch(identifier) {
-      case '2222':
-        response = {
-          'errors': [
-            {
-              'code': 'device.reboot.initiation.device.not.compatible',
-              'detail': 'Device is not compatible'
-            }
-          ]
-        };
-        responseStatus = 502;
-        break;
-
       case '4444':
         response = {};
         responseStatus = 500;
@@ -31,7 +19,7 @@ module.exports = function(app) {
         response = {
           '_links': {
             'diag:latest_reboot_job': {
-              'href': '/api/device_reboots/random-hash-' + identifier
+              'href': '/api/device-reboots/random-hash-' + identifier
             }
           }
         };
@@ -50,12 +38,8 @@ module.exports = function(app) {
     switch(identifier) {
       case 'random-hash-3333':
         response = {
-          'errors': [
-            {
-              'code': 'device.reboot.initiation.device.not.compatible',
-              'detail': 'Device is not compatible'
-            }
-          ]
+          'status': 'failed',
+          'error_message': 'Device is not compatible'
         };
         responseStatus = 502;
         break;
@@ -74,5 +58,5 @@ module.exports = function(app) {
     res.status(responseStatus).send(response);
   });
 
-  app.use('/api/device_reboots', deviceRebootsRouter);
+  app.use('/api/device-reboots', deviceRebootsRouter);
 };
