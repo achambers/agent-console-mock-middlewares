@@ -55,7 +55,7 @@ module.exports = function(app) {
           status: 'complete',
           wifi: {
             status: 'off',
-            rag: 'grey',
+            rag: 'red',
             resolution: 'The wireless interface on the customers router is inactive. Recommend the customer activates their router wireless interface.',
             encryption: {
               type: 'WEP',
@@ -69,7 +69,7 @@ module.exports = function(app) {
           status: 'complete',
           wifi: {
             status: 'off',
-            rag: 'grey',
+            rag: 'red',
             resolution: 'The wireless interface on the customers router is inactive. Recommend the customer activates their router wireless interface.',
             encryption: {
               type: 'No Encryption',
@@ -91,6 +91,11 @@ module.exports = function(app) {
           }
         };
         break;
+      case 'random-hash-7777':
+        response: {
+          status: 'progressing'
+        };
+        break;
       default:
         response = {
           status: 'complete',
@@ -101,7 +106,21 @@ module.exports = function(app) {
               type: 'WPA2',
               rag: 'green',
             }
-          }
+          },
+          devices: [
+            {
+              name: 'Sky+HD Box',
+              type: 'ethernet'
+            },
+            {
+              name: 'Suzy\'s iPhone 5S',
+              type: 'wireless'
+            },
+            {
+              name: 'Unnamed device',
+              type: 'ethernet'
+            }
+          ]
         };
     }
 
