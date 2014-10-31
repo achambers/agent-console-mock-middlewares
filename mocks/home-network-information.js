@@ -18,6 +18,7 @@ module.exports = function(app) {
 
   homeNetworkInformationRouter.get('/:identifier', function(req, res) {
     var identifier = req.params.identifier;
+    var responseStatus = 200;
 
     var response;
 
@@ -92,9 +93,20 @@ module.exports = function(app) {
         };
         break;
       case 'random-hash-7777':
-        response: {
+        response = {
           status: 'progressing'
         };
+        break;
+      case 'random-hash-8888':
+        response = {
+          status: 'failed',
+          'error_message': 'Router is not compatible.'
+        };
+        responseStatus = 502;
+        break;
+      case 'random-hash-9999':
+        response = {};
+        responseStatus = 500;
         break;
       default:
         response = {
@@ -124,7 +136,7 @@ module.exports = function(app) {
         };
     }
 
-    res.send(response);
+    res.status(responseStatus).send(response);
   });
 
   app.use('/api/home-network-information', homeNetworkInformationRouter);
