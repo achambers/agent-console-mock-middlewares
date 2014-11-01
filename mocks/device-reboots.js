@@ -30,7 +30,7 @@ module.exports = function(app) {
 
   deviceRebootsRouter.get('/:identifier', function(req, res) {
     var identifier = req.params.identifier;
-    var statuses = ['progressing', 'progressing', 'progressing', 'progressing', 'complete'];
+    var statuses = ['progressing', 'progressing', 'progressing', 'progressing', 'completed'];
     var status = statuses[counter];
     var responseStatus = 200;
     var response;

@@ -25,7 +25,7 @@ module.exports = function(app) {
     switch(identifier) {
       case 'random-hash-2222':
         response = {
-          status: 'complete',
+          status: 'completed',
           wifi: {
             status: 'on',
             rag: 'green',
@@ -39,7 +39,7 @@ module.exports = function(app) {
         break;
       case 'random-hash-3333':
         response = {
-          status: 'complete',
+          status: 'completed',
           wifi: {
             status: 'on',
             rag: 'green',
@@ -53,7 +53,7 @@ module.exports = function(app) {
         break;
       case 'random-hash-4444':
         response = {
-          status: 'complete',
+          status: 'completed',
           wifi: {
             status: 'off',
             rag: 'red',
@@ -67,7 +67,7 @@ module.exports = function(app) {
         break;
       case 'random-hash-5555':
         response = {
-          status: 'complete',
+          status: 'completed',
           wifi: {
             status: 'off',
             rag: 'red',
@@ -81,7 +81,7 @@ module.exports = function(app) {
         break;
       case 'random-hash-6666':
         response = {
-          status: 'complete',
+          status: 'completed',
           wifi: {
             status: 'unknown',
             rag: 'red',
@@ -110,7 +110,7 @@ module.exports = function(app) {
         break;
       default:
         response = {
-          status: 'complete',
+          status: 'completed',
           wifi: {
             status: 'on',
             rag: 'green',
