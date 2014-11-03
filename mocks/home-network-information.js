@@ -110,6 +110,36 @@ module.exports = function(app) {
         response = {};
         responseStatus = 500;
         break;
+      case 'random-hash-xxxx':
+        response = {
+          "status": "completed",
+          "wifi": {
+            "status": "on",
+            "rag": "green",
+            "information_text": "The wireless interface on the customers router is active.",
+            "encryption": {
+              "type": "WPA/WPA2+AES",
+              "rag": "green",
+              "information_text": "There is no encryption on the customers home network.  Customer network is not protected.","resolution":"Please update encryption settings by completing the following steps:\n\n- Open a new browser window and delete the contents of the address bar.\n- Type in 192.168.0.1 and press Enter.\n- If prompted at this point, enter the username and password.\n  - Default Username: admin\n  - Default Password: sky\n- Select the Wireless tab.\n- Select WPA2-PSK under the Security Options\n- Make a note of the Network Key\n- Click Apply at the bottom of the page.\n\nRefresh the status of the In-home diagnostic results using the Action menu.  If the fault is still persistent continue to follow ask dAVe.\n\nThe Jedi can also offer support.\n"
+            }
+          },
+          "devices": [
+            {
+              "name": "Dans-iPad",
+              "type": "wireless"
+            },
+            {
+              "name": "Unknown",
+              "type": "ethernet"
+            },
+            {
+              "name": "Islas-iPod",
+              "type": "wireless"
+            }
+          ]
+        };
+        break;
+
       default:
         response = {
           status: 'completed',
