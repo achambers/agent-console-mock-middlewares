@@ -29,9 +29,11 @@ module.exports = function(app) {
           wifi: {
             status: 'on',
             rag: 'green',
+            information_text: 'The wireless interface on the customers router is active.',
             encryption: {
               type: 'WEP',
               rag: 'amber',
+              information_text: 'Customer\'s home network has basic WEP encryption only.',
               resolution: 'Customer home network has basic WEP encryption only. Recommend customer upgrades to a stronger encryption mode.'
             }
           }
