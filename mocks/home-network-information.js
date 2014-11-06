@@ -34,7 +34,7 @@ module.exports = function(app) {
               type: 'WEP',
               rag: 'amber',
               information_text: 'Customer\'s home network has basic WEP encryption only.',
-              resolution: 'Customer home network has basic WEP encryption only. Recommend customer upgrades to a stronger encryption mode.'
+              next_best_steps: 'Customer home network has basic WEP encryption only.\n\nRecommend customer upgrades to a stronger encryption mode.'
             }
           }
         };
@@ -45,10 +45,11 @@ module.exports = function(app) {
           wifi: {
             status: 'on',
             rag: 'green',
+            information_text: 'The wireless interface on the customers router is active.',
             encryption: {
               type: 'No Encryption',
               rag: 'red',
-              resolution: 'There is no encryption enabled on the customer\'s home network. Recommend the customer enables encryption.'
+              next_best_steps: 'There is no encryption enabled on the customer\'s home network.\n\nRecommend the customer enables encryption.'
             }
           }
         };
@@ -59,10 +60,12 @@ module.exports = function(app) {
           wifi: {
             status: 'off',
             rag: 'red',
-            resolution: 'The wireless interface on the customers router is inactive. Recommend the customer activates their router wireless interface.',
+            information_text: 'The wireless interface on the customers router is inactive.',
+            next_best_steps: 'The wireless interface on the customers router is inactive.\n\nRecommend the customer activates their router wireless interface.',
             encryption: {
               type: 'WEP',
-              rag: 'grey'
+              rag: 'grey',
+              information_text: 'The wireless interface on the customers router is inactive.',
             }
           }
         };
@@ -73,10 +76,12 @@ module.exports = function(app) {
           wifi: {
             status: 'off',
             rag: 'red',
-            resolution: 'The wireless interface on the customers router is inactive. Recommend the customer activates their router wireless interface.',
+            information_text: 'The wireless interface on the customers router is inactive.',
+            next_best_steps: 'The wireless interface on the customers router is inactive.\n\nRecommend the customer activates their router wireless interface.',
             encryption: {
               type: 'No Encryption',
-              rag: 'grey'
+              rag: 'grey',
+              information_text: 'The wireless interface on the customers router is inactive.',
             }
           }
         };
@@ -87,6 +92,7 @@ module.exports = function(app) {
           wifi: {
             status: 'unknown',
             rag: 'red',
+            next_best_steps: 'Try another LAN port or check devices are powered up.\n\nRefresh the status of the In-home diagnostic results using the Action menu.\n\nIf the fault is still persistent continue to follow ask dAVe.\n\nThe Jedi can also offer support.',
             encryption: {
               type: 'unknown',
               rag: 'grey'
@@ -102,7 +108,11 @@ module.exports = function(app) {
       case 'random-hash-8888':
         response = {
           status: 'failed',
-          'error_message': 'Router is not compatible.'
+          errors: [
+          {
+            'information_text': 'Router is not compatible.'
+          }
+          ]
         };
         responseStatus = 502;
         break;
@@ -120,7 +130,8 @@ module.exports = function(app) {
             "encryption": {
               "type": "WPA/WPA2+AES",
               "rag": "green",
-              "information_text": "There is no encryption on the customers home network.  Customer network is not protected.","resolution":"Please update encryption settings by completing the following steps:\n\n- Open a new browser window and delete the contents of the address bar.\n- Type in 192.168.0.1 and press Enter.\n- If prompted at this point, enter the username and password.\n  - Default Username: admin\n  - Default Password: sky\n- Select the Wireless tab.\n- Select WPA2-PSK under the Security Options\n- Make a note of the Network Key\n- Click Apply at the bottom of the page.\n\nRefresh the status of the In-home diagnostic results using the Action menu.  If the fault is still persistent continue to follow ask dAVe.\n\nThe Jedi can also offer support.\n"
+              "information_text": "There is no encryption on the customers home network.  Customer network is not protected.",
+              "next_best_steps":"Please update encryption settings by completing the following steps:\n\n- Open a new browser window and delete the contents of the address bar.\n- Type in 192.168.0.1 and press Enter.\n- If prompted at this point, enter the username and password.\n  - Default Username: admin\n  - Default Password: sky\n- Select the Wireless tab.\n- Select WPA2-PSK under the Security Options\n- Make a note of the Network Key\n- Click Apply at the bottom of the page.\n\nRefresh the status of the In-home diagnostic results using the Action menu.  If the fault is still persistent continue to follow ask dAVe.\n\nThe Jedi can also offer support.\n"
             }
           },
           "devices": [
@@ -146,9 +157,11 @@ module.exports = function(app) {
           wifi: {
             status: 'on',
             rag: 'green',
+            information_text: 'The wireless interface on the customers router is active.',
             encryption: {
               type: 'WPA2',
               rag: 'green',
+              information_text: 'The customer\'s home network is protected.'
             }
           },
           devices: [
