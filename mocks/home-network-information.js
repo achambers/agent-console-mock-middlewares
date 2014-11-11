@@ -110,7 +110,8 @@ module.exports = function(app) {
           status: 'failed',
           errors: [
           {
-            'information_text': 'Router is not compatible.'
+            'information_text': 'Router is not compatible.',
+            'next_best_steps': 'The in-home diagnostics tool is compatible with Sagem Phase 3, Sky Hub and Sky Hub 2.0.\n\n Please follow ask dAVe for troubleshooting support.'
           }
           ]
         };
@@ -181,7 +182,7 @@ module.exports = function(app) {
         };
     }
 
-    res.status(responseStatus).send(response);
+    setTimeout(function() { res.status(responseStatus).send(response); }, 3000);
   });
 
   app.use('/api/home-network-information', homeNetworkInformationRouter);
