@@ -42,7 +42,7 @@ module.exports = function(app) {
           'status': 'failed',
           'errors': [
             {
-              'information_text': 'CPE last inform more than 24 hrs ago. CPE likely to be off or unable to communicate.',
+              'information_text': 'CPEE last inform more than 24 hrs ago. CPE likely to be off or unable to communicate.',
               'next_best_steps': 'The in-home diagnostics tool is compatible with Sagem Phase 3, Sky Hub and Sky Hub 2.0.\n\nPlease follow ask dAVe for troubleshooting support.'
             }
           ]
